@@ -1,0 +1,57 @@
+package project;
+import java.util.Scanner;
+
+
+public class array2 
+{
+	
+	public static void partition (int arr[],int low, int high)
+	{ 
+		int i=low,j=high;
+		int temp;
+		int ele= arr[i];
+		
+		while(i<=j)
+		{
+			while(arr[i]<ele)
+				i++;
+			while(arr[j]>ele)
+				j--;
+			if(i<=j)
+			{
+				 temp =arr[i];
+				arr[i]=arr[j];
+				arr[j]= temp;
+				i++;
+				j--;
+			}
+			if(low<j)
+				partition(arr,low,j);
+			if(i<high)
+				partition(arr,i,high);
+				
+			}
+		}
+		
+	public static void main (String [] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int n,i;
+		System.out.println("enter no of elements");
+		n = sc.nextInt();
+		int arr[] = new int[n];
+		System.out.println("enter" +n+" elements");
+		for( i=0;i<n;i++)
+			arr[i]=sc.nextInt();
+		
+	partition(arr,0,arr.length-1);
+		for(i=0;i<n;i++)
+			System.out.print(arr[i]+" ");
+		
+		
+	}
+
+
+	
+	
+}
